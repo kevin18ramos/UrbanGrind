@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Page</title>
+    <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lato&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+        :root{
+    --main-color:#976e67;
+    --black:#13131a;
+    --bg:#010103;
+    --border:.1rem solid rgba(255, 255, 255, 0.567);
+}
+
+
+        /* Set background color to a coffee color */
+        body {
+          background-color: #13131a;
+        }
+
+        /* Style the table */
+        table {
+          border-collapse: collapse;
+          margin: 20px auto;
+          font-family: 'DM Serif Display', serif;
+          font-size: 16px;
+        }
+
+        /* Style the table headers */
+        th {
+          background-color: #D2691E;
+          color: white;
+          font-weight: bold;
+          padding: 10px 20px;
+        }
+
+        /* Style the table rows */
+        td {
+          border: 1px solid #ddd;
+          padding: 10px 20px;
+          text-align: left;
+          color: white;
+          font-size: 23px;
+        }
+
+        /* Style the "Coffee:" text */
+        td::before {
+          content: "Coffee: ";
+          font-weight: bold;
+          color: white;
+        }
+
+        /* Style the navigation bar */
+        nav {
+            font-size: 1.45rem;
+            background: var(--main-color);
+            cursor: pointer;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-family: 'Lato', sans-serif;
+            width: 18%;
+            margin-left: 41%;
+        }
+
+        nav ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        nav li {
+          display: inline-block;
+          margin-right: 20px;
+        }
+
+        nav a {
+          color: #fff;
+          text-decoration: none;
+        }
+
+        nav a:hover {
+          border-bottom: 2px solid #fff;
+        }
+
+        /* Style the current coffee orders heading */
+        .heading {
+          text-align: center;
+          margin-top: 30px;
+          font-size: 31px;
+          font-weight: bold;
+          color: white;
+          border-bottom: 1px solid;
+          margin-left: 39%;
+          margin-right: 37%;
+        }
+    </style>
+
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+    </ul>
+</nav>
+<!-- Add the heading for current coffee orders -->
+<div class="heading">Current Coffee Items</div>
+<!-- Iterate through each coffee in the list of coffees -->
+<table>
+    <tr th:each="c : ${coffees}">
+        <!-- Display the name of the coffee as "Coffee: {name}" -->
+        <td th:text="${c.name} + ' | Item: ' + ${c.id}"></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customer Orders</title>
+    <style>
+     @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lato&display=swap');
+     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+
+            :root{
+        --main-color:#976e67;
+        --black:#13131a;
+        --bg:#010103;
+        --border:.1rem solid rgba(255, 255, 255, 0.567);
+}
+        /* Set background color to a coffee color */
+        body {
+          background-color: #13131a;
+        }
+
+        /* Style the table */
+        table {
+          border-collapse: collapse;
+          margin: 20px auto;
+          font-family: Arial, sans-serif;
+          font-size: 16px;
+          width: 100%;
+          max-width: 800px;
+        }
+
+        /* Style the table headers */
+        th {
+          background-color: #5d5d5d;
+          font-family: 'DM Serif Display', serif;
+          color: white;
+          font-weight: bold;
+          padding: 10px 20px;
+          text-align: left;
+          border: 1px solid #5d5d5d;
+        }
+
+        /* Style the table rows */
+        td {
+          border: 1px solid #ddd;
+          padding: 10px 20px;
+          text-align: left;
+          border-top: none;
+          color: white;
+          font-size: 23px;
+          font-family: 'DM Serif Display', serif;
+        }
+
+        /* Style the "Customer:" text */
+        td::before {
+          font-weight: bold;
+          color: white;
+        }
+
+        /* Style the "Made by:" text */
+        .barista::before {
+          content: "Barista: ";
+          font-weight: bold;
+          color: white;
+        }
+
+        /* Style the "Coffee:" text */
+        .coffee::before {
+          content: "Coffee: ";
+          font-weight: bold;
+          color: white;
+        }
+
+        /* Style the "Quantity:" text */
+        .quantity::before {
+          content: "Quantity: ";
+          font-weight: bold;
+          color: white;
+        }
+
+        /* Style the "Currently in line:" text */
+        .line::before {
+          content: "Currently in line: ";
+          font-weight: bold;
+          color: white;
+          list-style-type: none;
+          text-decoration: none;
+        }
+
+        /* Style the navigation bar */
+        nav {
+            font-size: 1.45rem;
+            background: var(--main-color);
+            cursor: pointer;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-family: 'Lato', sans-serif;
+            width: 18%;
+            margin-left: 41%;
+        }
+
+        nav ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        nav li {
+          display: inline-block;
+          margin-right: 20px;
+        }
+
+        nav a {
+          color: #fff;
+          text-decoration: none;
+        }
+
+        nav a:hover {
+          border-bottom: 2px solid #fff;
+        }
+
+        /* Style the current coffee orders heading */
+        .heading {
+          text-align: center;
+          margin-top: 30px;
+          font-size: 31px;
+          font-weight: bold;
+          color: white;
+          border-bottom: 1px solid;
+          margin-left: 46%;
+          margin-right: 45%;
+}
+        }
+    </style>
+
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+    </ul>
+</nav>
+<!-- Add the heading for current coffee orders -->
+<div class="heading">Orders</div>
+<!-- Iterate through each customer in the list of customers -->
+<table>
+    <tr th:each="coffee : ${coffees}">
+        <td class="barista" th:text="${coffee.barista.name}"></td>
+        <td class="coffee" th:text="${coffee.name}"></td>
+        <td class="quantity" th:text="  ${coffee.enrolledCustomers.size()}"></td>
+        <td>
+            <ul>
+                <li class="line" th:each="custo: ${coffee.enrolledCustomers}" th:text="${custo.name}"></li>
+            </ul>
+        </td>
+</table>
+</body>
+</html>

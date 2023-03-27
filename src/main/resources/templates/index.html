@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>complete responsive coffee shop website design</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+    
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lato&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+:root{
+    --main-color:#976e67;
+    --black:#13131a;
+    --bg:#010103;
+    --border:.1rem solid rgba(255, 255, 255, 0.567);
+}
+
+*{
+    font-family: 'Roboto', sans-serif;
+    margin:0; padding:0;
+    box-sizing: border-box;
+    outline: none; border:none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: 0.2s linear;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar{
+    width: .8rem;
+}
+
+html::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb{
+    background: #fff;
+    border-radius: 5rem;
+}
+
+body{
+    background: var(--bg);
+}
+
+section{
+    padding:2rem 7%;
+}
+
+.heading{
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: -59px;
+    margin-top: 58px;
+    font-size: 4rem; 
+    border-bottom: 1px solid;
+    margin-left: 35%;
+    margin-right: 35%;  
+}
+
+.heading span{
+    color:var(--main-color);
+    text-transform: uppercase;
+}
+
+.btn{
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 1.45rem;
+    color:#fff;
+    background: var(--main-color);
+    cursor: pointer;
+}
+
+.btn a {
+    font-family: 'Lato', sans-serif;
+}
+
+.btn:hover{
+    transform: scale(1.1);
+}
+
+.header{
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:1.5rem 7%;
+    border-bottom: var(--border);
+    position: fixed;
+    top:0; left: 0; right: 0;
+    z-index: 1000;
+}
+
+.header .logo img{
+    height: 10rem;
+    width: 15rem;
+    border-radius:50%;
+    transition: 2s;
+    margin-left: 550px;
+}
+.header .logo img:hover{
+    transform: rotateY(150deg);
+}
+
+.home{
+    min-height: 90vh;
+    min-width: 50vh;
+    display: flex;
+    align-items: center;
+    background:url("images/bg2.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.home .content{
+    max-width: 60rem;
+    margin-left: 662px;
+    background: rgba(0, 0, 0, 0.472); 
+    margin-top: 109px;
+}
+
+.home .content h3{
+    font-size: 6rem;
+    text-transform: uppercase;
+    color:#fff;
+    font-family: 'DM Serif Display', serif;
+    border:#010103;
+    border-style:double;
+    padding: 30px;
+    border-width: 9px;
+}
+
+.menu .box-container{
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: auto auto;
+    margin-top: 100px;
+}
+
+.menu .box-container .box{
+    padding: 50px;
+    text-align: center;
+    border:var(--border);  
+    margin-left: 10px;  
+    margin-right: 10px;  
+}
+
+.menu .box-container .box img{
+    height: 23rem;
+    width: 40rem;
+}
+
+.menu .box-container .box img:hover{
+    border-radius: 10px;
+}
+
+.menu .box-container .box h3{
+    color: #fff;
+    font-size: 3.2rem;
+    padding:1rem 0;
+    font-family: 'DM Serif Display', serif;
+}
+
+.menu .box-container .box:hover{
+    background: #fdfcfac2;
+}
+
+.menu .box-container .box:hover > *{
+    color:var(--black);
+}
+
+/* media queries  */
+@media (max-width:991px){
+
+    html{
+        font-size: 55%;
+    }
+
+    .header{
+        padding:1.5rem 2rem;
+    }
+
+    section{
+        padding:2rem;
+    }
+
+}
+
+@media (max-width:768px){
+
+    #menu-btn{
+        display: inline-block;
+    }
+
+    .header .navbar{
+        position: absolute;
+        top:100%; right: -100%;
+        background: #fff;
+        width: 30rem;
+        height: calc(100vh - 9.5rem);
+    }
+
+    .header .navbar.active{
+        right:0;
+    }
+
+    .header .navbar a{
+        color:var(--black);
+        display: block;
+        margin:1.5rem;
+        padding:.5rem;
+        font-size: 2rem;
+    }
+
+    .header .search-form{
+        width: 90%;
+        right: 2rem;
+    }
+
+    .home{
+        background-position: left;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .home .content h3{
+        font-size: 4.5rem;
+    }
+
+    .home .content p{
+        font-size: 1.5rem;
+    }
+
+}
+
+@media (max-width:450px){
+
+    html{
+        font-size: 50%;
+    }
+
+}
+
+</style>
+
+<body>
+
+    <!-- header section starts  -->
+
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="images/logo2.png" alt="">
+        </a>
+
+
+    </header>
+
+    <!-- header section ends -->
+
+    <!-- home section starts  -->
+
+    <section class="home" id="home">
+
+        <div class="content">
+            <h3>here the City Comes to Grind</h3>
+        </div>
+
+    </section>
+
+    <!-- home section ends -->
+
+    <!-- menu section starts  -->
+
+    <section class="menu" id="menu">
+
+        <h1 class="heading">Get to know <span>us</span> </h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>Customers</h3>
+                <img src= "images/customers.png" alt="customers">
+                <a href="/customer/all" class="btn">View</a>
+            </div>
+
+            <div class="box">
+                <h3>Baristas</h3>
+                <img src="images/baristas.png" alt="baristas">
+
+                <a href="/barista/all" class="btn">View</a>
+            </div>
+
+            <div class="box">
+                <h3>Coffee</h3>
+                <img src="images/coffee.png" alt="coffee">
+
+                <a href="/coffee/all" class="btn">View</a>
+            </div>
+
+            <div class="box">
+                <h3>Orders</h3>
+                <img src="images/coffee.png" alt="coffee">
+
+                <a href="/order" class="btn">View</a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- menu section ends -->
+
+
+    <!-- custom js file link  -->
+    <script>
+        let navbar = document.querySelector('.navbar');
+
+document.querySelector('#menu-btn').onclick = () =>{
+    navbar.classList.toggle('active');
+    searchForm.classList.remove('active');
+    cartItem.classList.remove('active');
+}
+
+let searchForm = document.querySelector('.search-form');
+
+document.querySelector('#search-btn').onclick = () =>{
+    searchForm.classList.toggle('active');
+    navbar.classList.remove('active');
+    cartItem.classList.remove('active');
+}
+
+let cartItem = document.querySelector('.cart-items-container');
+
+document.querySelector('#cart-btn').onclick = () =>{
+    cartItem.classList.toggle('active');
+    navbar.classList.remove('active');
+    searchForm.classList.remove('active');
+}
+
+window.onscroll = () =>{
+    navbar.classList.remove('active');
+    searchForm.classList.remove('active');
+    cartItem.classList.remove('active');
+}
+    </script>
+
+</body>
+
+
+
+</html>
